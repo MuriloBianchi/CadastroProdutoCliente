@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produtos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 form-container">
+                <h2 class="mb-4 text-center">Cadastro de Produtos</h2>
+                <form (ngSubmit)="OnSubmit(productForm)" #productForm="ngForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="nomeProduto" class="form-label">Nome do Produto</label>
+                            <input type="text" class="form-control" name="nome" ngModel required>
+                            <div class="error-message" *ngIf="productForm.controls['nome']?.touched && productForm.controls['nome']?.invalid">
+                                Por favor, insira o nome do produto (mínimo 3 caracteres).
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="marca" class="form-label">Marca</label>
+                            <input type="text" class="form-control" name="marca" ngModel required>
+                            <div class="error-message" *ngIf="productForm.controls['marca']?.touched && productForm.controls['marca']?.invalid">
+                                Por favor, insira a marca do produto.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="descricao" class="form-label">Descrição</label>
+                        <textarea class="form-control" rows="3" name="descricao" ngModel required></textarea>
+                        <div class="error-message" *ngIf="productForm.controls['descricao']?.touched && productForm.controls['descricao']?.invalid">
+                            Por favor, insira uma descrição do produto (mínimo 10 caracteres).
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="valorCompra" class="form-label">Valor de Compra</label>
+                            <input type="number" class="form-control" name="valorCompra" step="1" min="0" ngModel required>
+                            <div class="error-message" *ngIf="productForm.controls['valorCompra']?.touched && productForm.controls['valorCompra']?.invalid">
+                                Por favor, insira o valor de compra.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="valorVenda" class="form-label">Valor de Venda</label>
+                            <input type="number" class="form-control" name="valorVenda" step="1" min="0" ngModel required>
+                            <div class="error-message" *ngIf="productForm.controls['valorVenda']?.touched && productForm.controls['valorVenda']?.invalid">
+                                Por favor, insira o valor de venda.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="quantidadeEstoque" class="form-label">Quantidade em Estoque</label>
+                            <input type="number" class="form-control" name="qtdEstoque" step="1" min="0" ngModel required>
+                            <div class="error-message" *ngIf="productForm.controls['qtdEstoque']?.touched && productForm.controls['qtdEstoque']?.invalid">
+                                Por favor, insira a quantidade em estoque.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary">Inserir Produto</button>
+                        <button type="button" class="btn btn-secondary" (click)="OnCancel()">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="select-container mb-3" style="height: 40px;"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
